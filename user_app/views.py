@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics, status
 from django.shortcuts import render
 from drf_spectacular.utils import extend_schema, extend_schema_view
+from .permissions import IsRole
 
 
 @extend_schema_view(
@@ -57,7 +58,10 @@ class UserListCreateView(generics.ListCreateAPIView):
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsRole]
+
+    # Define los roles permitidos para esta vista
+    allowed_roles = ['developer', 'admin']
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()

@@ -1,0 +1,58 @@
+[
+  {
+    "model": "user_app.role",
+    "pk": 1,
+    "fields": {
+      "name": "developer",
+      "description": "Full access to system configuration"
+    }
+  },
+  {
+    "model": "user_app.role",
+    "pk": 2,
+    "fields": {
+      "name": "admin",
+      "description": "Administrative user"
+    }
+  },
+  {
+    "model": "user_app.role",
+    "pk": 3,
+    "fields": {
+      "name": "receptionist",
+      "description": "Handles patient admissions and appointments"
+    }
+  },
+  {
+    "model": "user_app.role",
+    "pk": 4,
+    "fields": {
+      "name": "doctor",
+      "description": "Provides medical attention"
+    }
+  },
+  {
+    "model": "user_app.role",
+    "pk": 5,
+    "fields": {
+      "name": "nurse",
+      "description": "Assists in patient care"
+    }
+  },
+  {
+    "model": "user_app.role",
+    "pk": 6,
+    "fields": {
+      "name": "pharmacy_technician",
+      "description": "Dispenses medications"
+    }
+  },
+  {
+    "model": "user_app.role",
+    "pk": 7,
+    "fields": {
+      "name": "lab_technician",
+      "description": "Performs lab tests"
+    }
+  }
+]

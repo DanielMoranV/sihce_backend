@@ -1,0 +1,53 @@
+[
+  {
+    "model": "user_app.user",
+    "pk": 1,
+    "fields": {
+      "dni": "70315050",
+      "first_name": "Daniel",
+      "last_name": "Moran Vilchez",
+      "email": "daniel.moran@gmail.com",
+      "phone": "123456789",
+      "address": "Calle Ficticia 123",
+      "role": 1,
+      "is_active": true,
+      "create_at": "2025-01-01T12:00:00Z",
+      "update_at": "2025-01-01T12:00:00Z",
+      "delete_at": null
+    }
+  },
+  {
+    "model": "user_app.user",
+    "pk": 2,
+    "fields": {
+      "dni": "23456789",
+      "first_name": "Ana",
+      "last_name": "González",
+      "email": "ana.gonzalez@example.com",
+      "phone": "987654321",
+      "address": "Avenida Principal 456",
+      "role": 2,
+      "is_active": true,
+      "create_at": "2025-01-02T12:00:00Z",
+      "update_at": "2025-01-02T12:00:00Z",
+      "delete_at": null
+    }
+  },
+  {
+    "model": "user_app.user",
+    "pk": 3,
+    "fields": {
+      "dni": "34567890",
+      "first_name": "Carlos",
+      "last_name": "Martínez",
+      "email": "carlos.martinez@example.com",
+      "phone": "1122334455",
+      "address": "Calle Secundaria 789",
+      "role": 3,
+      "is_active": true,
+      "create_at": "2025-01-03T12:00:00Z",
+      "update_at": "2025-01-03T12:00:00Z",
+      "delete_at": null
+    }
+  }
+]
