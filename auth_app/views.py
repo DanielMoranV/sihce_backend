@@ -4,6 +4,9 @@ from rest_framework import status
 from .serializers import LoginSerializer
 from config.utils.response import success_response, error_response
 from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiExample
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticated
+from user_app.serializers import UserSerializer
 
 
 @extend_schema(
@@ -41,12 +44,36 @@ class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
-            return Response(success_response(
-                data=serializer.validated_data,
-                message='Inicio de sesión exitoso'
-            ), status=status.HTTP_200_OK)
+            data = serializer.validated_data
+            response = Response({
+                "user": data["user"],
+                "role": data["role"]
+            }, status=status.HTTP_200_OK)
 
-        return Response(error_response(
-            errors=serializer.errors,
-            message='Error al iniciar sesión'
-        ), status=status.HTTP_400_BAD_REQUEST)
+            # Acceso y refresh token como cookies seguras
+            response.set_cookie(
+                key='access_token',
+                value=data['access'],
+                httponly=True,
+                secure=True,
+                samesite='Lax',
+                max_age=900  # 15 minutos
+            )
+            response.set_cookie(
+                key='refresh_token',
+                value=data['refresh'],
+                httponly=True,
+                secure=True,
+                samesite='Lax',
+                max_age=604800  # 7 días
+            )
+            return response
+        return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class MeView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -130,6 +130,10 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
     # Tipo de encabezado para el token
     'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_COOKIE': 'access_token',  # Nombre de la cookie
+    'AUTH_COOKIE_SECURE': True,     # Solo HTTPS
+    'AUTH_COOKIE_HTTP_ONLY': True,  # No accesible vía JS
+    'AUTH_COOKIE_SAMESITE': 'Lax',  # O 'Strict'
 }
 
 AUTH_USER_MODEL = 'user_app.User'
